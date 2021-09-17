@@ -13,8 +13,13 @@
     <tr>
         @{
             //TODO #2: Complete the View Jobs By Category Table
-
-                <td><a asp-controller="List" asp-action="Jobs" asp-route-column="All" asp-route-value="All Jobs">All Jobs</a></td>
+            <td>
+                <ul>
+                    <li>
+                        <a asp-controller="List" asp-action="Jobs" asp-route-column="All" asp-route-value="All Jobs">All Jobs</a>
+                    </li>
+                </ul>
+            </td>
         }
 
         @foreach (var category in ViewBag.tableChoices)
