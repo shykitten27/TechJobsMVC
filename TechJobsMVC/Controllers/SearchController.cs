@@ -24,6 +24,10 @@ namespace TechJobsMVC.Controllers
         {
             var column = searchType;
             var value = searchTerm;
+            if (searchTerm == null || searchTerm == "")
+            {
+                value = "all";
+            }
             List<Job> jobs;
             if (column.ToLower().Equals("all"))
             {
