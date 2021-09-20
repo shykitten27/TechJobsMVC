@@ -29,27 +29,48 @@
     @{
         //TODO #4: Loop over the search results to display all job fields.
     }
-@*<table class="centeredTable">
-    <tr>
-        @foreach (var column in ViewBag.columns)
-        {
-            <th>@column.Value</th>
-        }
-    </tr>
+</div>
 
-    @foreach (var category in ViewBag.tableChoices)
-    {
-        <td>
-            <ul>
-                @foreach (var item in category.Value)
-                {
-                    <li>
-                        <a asp-controller="Search" asp-action="Jobs" asp-route-column="@category.Key" asp-route-value="@item">@item</a>
-                    </li>
-                }
-            </ul>
-        </td>
-    }
-    </tr>
-</table>*@
+<div class="results">
+
+@{
+    //Use a loop to display job results in a table.
+}
+
+@if (ViewBag.jobs == null)
+{
+    <p>No jobs available.</p>
+}
+else
+{
+    <table class="job-listing">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Employer
+            </th>
+            <th>
+                Location
+            </th>
+            <th>
+                Position Type
+            </th>
+            <th>
+                Skills
+            </th>
+        </tr>
+        @foreach (Job job in ViewBag.jobs)
+        {
+            <tr>
+                <td>@job.Name</td>
+                <td>@job.Employer</td>
+                <td>@job.Location</td>
+                <td>@job.PositionType</td>
+                <td>@job.CoreCompetency</td>
+            </tr>
+        }
+    </table>
+}
 </div>

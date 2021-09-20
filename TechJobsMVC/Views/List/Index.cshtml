@@ -2,10 +2,9 @@
     <h1>@ViewBag.title</h1>
     <h2 class="centered">View Jobs By Category</h2>
 </div>
-
 <table class="centeredTable">
     <tr>
-        @foreach(var column in ViewBag.columns)
+        @foreach (var column in ViewBag.columns)
         {
             <th>@column.Value</th>
         }
