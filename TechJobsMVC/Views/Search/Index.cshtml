@@ -18,7 +18,7 @@
 
         <p>
             <label for="searchTerm">Keyword:</label>
-            <input type="text" name="searchTerm" id="searchTerm" />
+            <input type="text" name="searchTerm" id="searchTerm" value="@ViewBag.searchTerm" />
         </p>
 
         <input type="submit" value="Search" />
@@ -29,48 +29,41 @@
     @{
         //TODO #4: Loop over the search results to display all job fields.
     }
-</div>
 
-<div class="results">
-
-@{
-    //Use a loop to display job results in a table.
-}
-
-@if (ViewBag.jobs == null)
-{
-    <p>No jobs available.</p>
-}
-else
-{
-    <table class="job-listing">
-        <tr>
-            <th>
-                Name
-            </th>
-            <th>
-                Employer
-            </th>
-            <th>
-                Location
-            </th>
-            <th>
-                Position Type
-            </th>
-            <th>
-                Skills
-            </th>
-        </tr>
-        @foreach (Job job in ViewBag.jobs)
-        {
+    @if (ViewBag.jobs == null)
+    {
+        <p>No jobs available.</p>
+    }
+    else
+    {
+        <table class="job-listing">
             <tr>
-                <td>@job.Name</td>
-                <td>@job.Employer</td>
-                <td>@job.Location</td>
-                <td>@job.PositionType</td>
-                <td>@job.CoreCompetency</td>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Employer
+                </th>
+                <th>
+                    Location
+                </th>
+                <th>
+                    Position Type
+                </th>
+                <th>
+                    Skills
+                </th>
             </tr>
-        }
-    </table>
-}
+            @foreach (Job job in ViewBag.jobs)
+            {
+                <tr>
+                    <td>@job.Name</td>
+                    <td>@job.Employer</td>
+                    <td>@job.Location</td>
+                    <td>@job.PositionType</td>
+                    <td>@job.CoreCompetency</td>
+                </tr>
+            }
+        </table>
+    }
 </div>

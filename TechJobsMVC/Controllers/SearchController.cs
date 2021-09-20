@@ -41,6 +41,7 @@ namespace TechJobsMVC.Controllers
             }
             ViewBag.jobs = jobs;
             ViewBag.columns = ListController.ColumnChoices; //using list controller inside of the search controller
+            ViewBag.searchTerm = searchTerm;
             return View("Index");
         }
     }
