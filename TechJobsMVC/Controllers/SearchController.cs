@@ -24,20 +24,34 @@ namespace TechJobsMVC.Controllers
         {
             var column = searchType;
             var value = searchTerm;
-            if (searchTerm == null || searchTerm == "")
-            {
-                value = "all";
-            }
             List<Job> jobs;
-            if (column.ToLower().Equals("all"))
+            if (column.ToLower().Equals("all")) //check column aka searchType
             {
-                jobs = JobData.FindAll();
-                ViewBag.title = "All Jobs";
+                if (value == null || value == "") //check value aka searchTerm
+                {
+                    value = "all"; //set the searchTerm to "all"
+                    jobs = JobData.FindAll();
+                    ViewBag.title = "All Jobs";
+                }
+                else //column searchType is "all", but value searchTerm is filled
+                {
+                    jobs = JobData.FindByColumnAndValue(column, value);
+                    ViewBag.title = "Jobs with " + column + ": " + value;
+                }
             }
-            else
+            else //column searchType is filled
             {
-                jobs = JobData.FindByColumnAndValue(column, value);
-                ViewBag.title = "Jobs with " + column + ": " + value;
+                if (value == null || value == "") //check value aka searchTerm
+                {
+                    value = "all"; //set the searchTerm to "all"
+                    jobs = JobData.FindByColumnAndValue(column, value);
+                    ViewBag.title = "Jobs with " + column + ": " + value;
+                }
+                else //column searchType is filled and value searchTerm is filled
+                {
+                    jobs = JobData.FindByColumnAndValue(column, value);
+                    ViewBag.title = "Jobs with " + column + ": " + value;
+                }
             }
             ViewBag.jobs = jobs;
             ViewBag.columns = ListController.ColumnChoices; //using list controller inside of the search controller
