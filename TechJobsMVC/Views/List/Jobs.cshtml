@@ -15,6 +15,9 @@
         <table class="job-listing">
             <tr>
                 <th>
+                    Id
+                </th>
+                <th>
                     Name
                 </th>
                 <th>
@@ -33,6 +36,7 @@
             @foreach (Job job in ViewBag.jobs)
             {
         <tr>
+            <td>@job.Id</td>
             <td>@job.Name</td>
             <td><a asp-controller="List" asp-action="Jobs" asp-route-column="employer" asp-route-value=@job.Employer>@job.Employer</a></td>
             <td><a asp-controller="List" asp-action="Jobs" asp-route-column="location" asp-route-value=@job.Location>@job.Location</a></td>
